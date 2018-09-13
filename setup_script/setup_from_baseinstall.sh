@@ -13,12 +13,13 @@ fi
 sudo apt -y update
 sudo apt -y upgrade
 
-sudo apt -y install git vim python-imaging python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio
+sudo apt -y install git vim python-imaging python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio chromium-browser
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 sudo python3 get-pip.py
-sudo pip3 install qrcode requests
 rm get-pip.py
+
+sudo pip3 install qrcode requests
 
 sudo update-alternatives --set editor /usr/bin/vim.basic
 
@@ -27,7 +28,7 @@ set +e
 rm -rf /home/pi/electronic_badge_2018
 set -e
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git -C /home/pi clone https://github.com/builderscon/electronic_badge_2018.git
+git -C /home/pi clone https://github.com/tac-yacht/electronic_badge_2018.git
 
 /home/pi/electronic_badge_2018/show_img/show_img.py /home/pi/electronic_badge_2018/bootup/virtual_sd_builder/skel/img/info.png
 
@@ -43,6 +44,7 @@ sudo cp /home/pi/electronic_badge_2018/resource/motd /etc/motd
 
 sudo cp /home/pi/electronic_badge_2018/resource/show_txt /usr/bin/
 sudo cp /home/pi/electronic_badge_2018/resource/show_img /usr/bin/
+sudo cp /home/pi/electronic_badge_2018/resource/show_html /usr/bin/
 sudo cp /home/pi/electronic_badge_2018/resource/mount_vsd_ro /usr/bin/
 sudo cp /home/pi/electronic_badge_2018/resource/mount_vsd_rw /usr/bin/
 
